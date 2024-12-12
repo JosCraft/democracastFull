@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Candidato } from "@/components/interface"
-import CardCandidatos  from './components/CardCandidatos'
+import {CardCandidatos, AlertEleccion}  from './components'
 import { Main } from '@/template';
 
 const candidatos: Candidato[] = [
@@ -90,28 +90,48 @@ interface EleccionProps {
     idEleccion ?: number
 }
 
-const Eleccion = (
-    {idEleccion}: EleccionProps
-) => {
-    console.log(idEleccion)
-    const [candidatosList, setCandidatos] = useState<Candidato[]>([])
+const Eleccion = ({ idEleccion }: EleccionProps) => {
+    const [candidatosList, setCandidatos] = useState<Candidato[]>([]);
+    const [cantidadVotos, setCantidadVotos] = useState<number>(0);
+    const [maxVotos, setMaxVotos] = useState<number>(0);
+    const [isAlertOpen, setIsAlertOpen] = useState<boolean>(false);
+  
     const handleVotar = (candidato: Candidato) => {
-        console.log(candidato)
-    }
-
+      setCantidadVotos(cantidadVotos + 1);
+  
+      if (cantidadVotos + 1 >= maxVotos) {
+        setIsAlertOpen(true);
+      }
+    };
+  
+    const handleCloseAlert = () => {
+      setIsAlertOpen(false);
+      setCantidadVotos(0); 
+    };
+  
     useEffect(() => {
-        setCandidatos(candidatos.filter(candidato => candidato.eleccion_id === idEleccion))
-    }, [candidatos])
-
-  return (
-    <Main>
-        <div className='flex justify-center flex-wrap gap-5 mt-10 px-8'>
-        {candidatosList.map((candidato) => (
-            <CardCandidatos key={candidato.id} candidato={candidato} handleVotar={handleVotar} />
-        ))}
+      setCandidatos(candidatos.filter((candidato) => candidato.eleccion_id === idEleccion));
+      const storedMaxVotos = localStorage.getItem("cantidadVotos");
+      setMaxVotos(storedMaxVotos ? parseInt(storedMaxVotos) : 0);
+    }, [idEleccion]);
+  
+    return (
+      <Main>
+        <div className="flex justify-center flex-wrap gap-4 mt-10 px-8">
+          {cantidadVotos < maxVotos ? (
+            <>
+              {candidatosList.map((candidato) => (
+                <CardCandidatos key={candidato.id} candidato={candidato} handleVotar={handleVotar} />
+              ))}
+            </>
+          ) : (
+            <p className="text-center text-xl text-gray-600">Ya no puedes votar más.</p>
+          )}
         </div>
-    </Main>
-  )
-}
-
-export default Eleccion
+  
+        <AlertEleccion isOpen={isAlertOpen} onClose={handleCloseAlert} />
+      </Main>
+    );
+  };
+  
+  export default Eleccion;

@@ -59,7 +59,7 @@ const CardEleccion = ({eleccion}:CardEleccionProps) => {
       </Button>
     ) : (
       eleccion.estado_id === 1 ? (
-        <ParticiparButton id={(eleccion.id || 0).toString()}  />
+        <ParticiparButton id={(eleccion.id || 0).toString()} cantidadVotos={eleccion.votospermitidos} />
       ) : null
     )}
   </CardFooter>

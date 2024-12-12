@@ -47,13 +47,13 @@ const Navbar = () => {
                             </a>
                         </li>
                         <li>
-                            <a href={EleccionRoute.ELECCIONES} className="link text-amber-300 hover:text-amber-500 transition-colors duration-200">
+                            <a href={`/${EleccionRoute.ELECCIONES}`} className="link text-amber-300 hover:text-amber-500 transition-colors duration-200">
                                 <CiPaperplane size={20} />
                                 Elecciones
                             </a>
                         </li>
                         <li>
-                            <a href={PrivateRoutes.CREAR_ELECCION} className="link text-amber-300 hover:text-amber-500 transition-colors duration-200">
+                            <a href={`/${PrivateRoutes.BASE}/${PrivateRoutes.CREAR_ELECCION}`} className="link text-amber-300 hover:text-amber-500 transition-colors duration-200">
                                 <IoAddCircleOutline size={20} />
                                 Crear Eleccion
                             </a>

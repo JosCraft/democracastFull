@@ -7,7 +7,7 @@ const elecciones: Eleccion[] = [
     nombre: 'Elección 1',
     fecha: '2022-12-12',
     estado_id: 1,
-    votospermitidos: 1
+    votospermitidos: 5
   },
   {
     id: 2,

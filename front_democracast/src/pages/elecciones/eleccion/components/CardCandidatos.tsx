@@ -19,32 +19,36 @@ const CardCandidatos = ({ candidato, handleVotar }: CardCandidatosProps) => {
 
     const handleVotarClick = () => {
         setIsVoted(true); 
-        handleVotar(candidato); 
+        handleVotar(candidato);
     };
-
+    
     return (
-        <Card className="w-[300px] p-6 shadow-xl border rounded-lg bg-amber-100 flex flex-col items-start">
-            <CardHeader className="mb-4 flex items-center justify-between w-full">
-                <CardTitle className="text-xl font-semibold text-slate-800">
+        <Card
+            className={`w-[180px] p-2 shadow-sm border rounded-md flex flex-col items-center
+                transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-amber-500 duration-300
+                ${
+                    isVoted
+                        ? "bg-gray-300 text-gray-500 cursor-not-allowed transition-none" 
+                        : "bg-amber-50 text-slate-800 cursor-pointer"
+                }`}
+            onClick={!isVoted ? handleVotarClick : undefined}
+        >
+            <CardHeader className="mb-1 w-full flex items-center justify-center">
+                <div className={`text-3xl font-bold ${isVoted ? "text-gray-500" : "text-red-700"}`}>
                     {candidato.numero_cartelera}
-                </CardTitle>
+                </div>
             </CardHeader>
-            <CardContent className="space-y-2 text-slate-700">
-                <p className="text-sm">
-                    Nombre: <span className="font-medium text-slate-800">{candidato.nombre}</span>
+            <CardContent className={`text-slate-700 ${isVoted ? "text-gray-500" : ""}`}>
+                <p className="text-xl truncate">
+                    <span className={`font-medium ${isVoted ? "text-gray-500" : "text-slate-800"}`}>
+                        {candidato.nombre}
+                    </span>
                 </p>
             </CardContent>
-            <CardFooter className="mt-4 w-full flex justify-end">
-                <Button
-                    className={`bg-amber-600 text-white hover:bg-red-700 px-4 py-2 rounded-md ${isVoted ? "bg-gray-400 cursor-not-allowed" : ""}`}
-                    onClick={handleVotarClick}
-                    disabled={isVoted} // Desactiva el botón después de votar
-                >
-                    {isVoted ? "Votado" : "Votar"}
-                </Button>
-            </CardFooter>
+            <CardFooter className="mt-2 w-full flex justify-center"></CardFooter>
         </Card>
     );
+    
 };
 
 export default CardCandidatos;

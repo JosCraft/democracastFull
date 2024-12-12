@@ -11,6 +11,7 @@ const Elecciones = () => {
 
   const EleccionWrapper = () => {
     const { id } = useParams(); // Obtén el id dinámico de la URL
+    console.log('EleccionWrapper ',id);
     return <Eleccion idEleccion={parseInt(id || '0')} />; // Pasa el id como prop
   };
 
@@ -18,9 +19,7 @@ const Elecciones = () => {
     <RoutesNotFound>
         <Route path="/" element={<Navigate to={EleccionRoute.DASHBOARD} />} />
         <Route path={EleccionRoute.DASHBOARD} element={<Dashboard />} />
-        <Route
-        path={`${EleccionRoute.ELECCIONES}`}
-        element={<EleccionWrapper />}
+        <Route path={`${EleccionRoute.ELECCION}`} element={<EleccionWrapper />}
       />
     </RoutesNotFound>
   )
