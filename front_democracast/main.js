@@ -20,6 +20,9 @@ function createWindow() {
 
   win.loadURL('http://localhost:5173/'); // React en desarrollo
 
+  // Hacer que la ventana ocupe toda la pantalla
+  win.setFullScreen(true); // Esto pone la ventana en modo de pantalla completa
+
   win.on('closed', () => {
     win = null;
   });
