@@ -2,19 +2,22 @@ export const PublicRoutes = {
     LOGIN : '/login',  
     HOME : '/',
     ABOUT : '/about',
-    SHOP : '/shop',
-    REGISTER : '/register',
+    CONTACT : '/contact',
+    
 };
+
+export const EleccionRoute = {
+    ELECCIONES: 'elecciones',
+    DASHBOARD: 'dashboard',
+    ELECCION: ':id',
+    VOTAR: ':id/votar',
+    RESULTADOS: ':id/resultados',
+}
 
 export const PrivateRoutes = {
+    BASE: 'adm',
+    DASHBOARD : 'dashboard',
+    GESTIONAR_ELECCIONES : 'gestionar-elecciones',
+    CREAR_ELECCION : 'crear-eleccion',
 };
 
-export const PrivateRoutesAdmin = {
-    BASE : 'adm',
-    DASHBOARD : 'dashboard',
-    INVENTORY : 'inventory',
-    PRODUCTS : 'products',
-    USERS : 'users',
-    VENTAS : 'ventas',
-    SETTINGS : 'settings',
-};

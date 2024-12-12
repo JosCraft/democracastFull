@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import NavBarStyle from "./NavBarStyle";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -6,6 +6,7 @@ import { FaHome, FaInfoCircle, FaStore } from 'react-icons/fa';
 import { CiPaperplane } from "react-icons/ci";
 import { IoAddCircleOutline } from "react-icons/io5";
 import { CiEdit } from "react-icons/ci";
+import { PrivateRoutes, PublicRoutes, EleccionRoute } from "../../models";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -40,25 +41,25 @@ const Navbar = () => {
                 <nav className="container mx-auto px-4 py-3 flex justify-between items-center">
                     <ul className="hidden md:flex space-x-6">
                         <li>
-                            <a href="/" className="link text-amber-300 hover:text-amber-500 transition-colors duration-200">
+                            <a href={PublicRoutes.HOME} className="link text-amber-300 hover:text-amber-500 transition-colors duration-200">
                                 <FaHome size={20} />
                                 Inicio
                             </a>
                         </li>
                         <li>
-                            <a href="/shop" className="link text-amber-300 hover:text-amber-500 transition-colors duration-200">
+                            <a href={EleccionRoute.ELECCIONES} className="link text-amber-300 hover:text-amber-500 transition-colors duration-200">
                                 <CiPaperplane size={20} />
                                 Elecciones
                             </a>
                         </li>
                         <li>
-                            <a href="/shop" className="link text-amber-300 hover:text-amber-500 transition-colors duration-200">
+                            <a href={PrivateRoutes.CREAR_ELECCION} className="link text-amber-300 hover:text-amber-500 transition-colors duration-200">
                                 <IoAddCircleOutline size={20} />
                                 Crear Eleccion
                             </a>
                         </li>
                         <li>
-                            <a href="/shop" className="link text-amber-300 hover:text-amber-500 transition-colors duration-200">
+                            <a href={PrivateRoutes.GESTIONAR_ELECCIONES} className="link text-amber-300 hover:text-amber-500 transition-colors duration-200">
                                 <CiEdit size={20} />
                                 Gestionar Elecciones
                             </a>
