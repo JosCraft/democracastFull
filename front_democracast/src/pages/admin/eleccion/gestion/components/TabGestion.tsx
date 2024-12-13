@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import Datos from './Datos';
+import Candidatos from './Candidatos';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -127,8 +128,7 @@ export default function TabsGestion() {
         <Datos/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <h2 className="text-amber-500 font-semibold">Candidatos</h2>
-        <p>Aquí puedes gestionar los candidatos.</p>
+        <Candidatos/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <h2 className="text-amber-500 font-semibold">Resultados</h2>

@@ -46,13 +46,14 @@ const CrearEleccion = () => {
         type: "success",
     });
 
-    const idEleccion = Math.random().toString(36).substr(2, 9);
+    const idEleccion = 1;
 
     localStorage.setItem("eleccion", JSON.stringify({
         id: idEleccion,
         nombre: formData.nombre_eleccion,
         descripcion: formData.descripcion_eleccion,
         fecha: formData.fecha_eleccion,
+        estado_id: 1,
         votos_permitidos: +formData.votos_permitidos_eleccion,
     })
     )
