@@ -6,3 +6,10 @@ export interface Candidato {
     persona_id: number
     nombre: string
 }
+
+export interface Persona
+{
+    id?: number
+    nombre: string
+    apellido: string
+}

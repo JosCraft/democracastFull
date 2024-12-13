@@ -16,10 +16,10 @@ interface CardCandidatosProps {
 const CardCandidatos = ({ candidato, handleRemoveCandidato }: CardCandidatosProps) => {
     return (
         <Card
-            className={`w-[180px] p-2 shadow-sm border rounded-md flex flex-col items-center
+            className={`w-[180px]  shadow-sm border rounded-md flex flex-col items-center
                 bg-amber-50 text-slate-800`}
         >
-            <CardHeader className="mb-1 w-full flex items-center justify-center">
+            <CardHeader className="w-full flex items-center justify-center">
                 <div className="text-3xl font-bold text-red-700">
                     {candidato.numero_cartelera}
                 </div>
@@ -31,7 +31,7 @@ const CardCandidatos = ({ candidato, handleRemoveCandidato }: CardCandidatosProp
                     </span>
                 </p>
             </CardContent>
-            <CardFooter className="mt-2 w-full flex justify-center">
+            <CardFooter className="w-full flex justify-center">
                 <Button
                     variant="contained"
                     color="secondary"
