@@ -1,4 +1,4 @@
-//import { Provider } from 'jotai';
+import { Provider } from 'jotai';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -7,8 +7,8 @@ import AppRoutes from './routes/AppRoutes.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-   {/* <Provider>*/ }
+    <Provider>
       <AppRoutes />
-    {/*</Provider>*/}
+    </Provider>
   </StrictMode>,
 )

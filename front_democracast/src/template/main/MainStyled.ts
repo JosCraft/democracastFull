@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import logo from "@/assets/LOGO.png"; // Verifica que la ruta sea correcta
+import logo from "@/assets/LOGO.png";
 
 export const MainContainer = styled.div`
 

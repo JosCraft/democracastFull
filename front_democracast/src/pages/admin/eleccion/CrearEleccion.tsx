@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+import { EleccionAtom } from "@/context";
+import { useNavigate } from "react-router-dom"; 
 import { Label, Input, Button } from "@/components/ui";
 import { FaExclamationCircle } from "react-icons/fa";
 import { Main } from "@/template";
 import { toast } from "@/hooks/use-toast";
+import { PrivateRoutes } from "../../../models";
+import Eleccion from "../../elecciones/eleccion/Eleccion";
 
 const CrearEleccion = () => {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     nombre_eleccion: "",
     descripcion_eleccion: "",
@@ -38,6 +45,18 @@ const CrearEleccion = () => {
         description: "La elección ha sido creada exitosamente.",
         type: "success",
     });
+
+    const idEleccion = Math.random().toString(36).substr(2, 9);
+
+    localStorage.setItem("eleccion", JSON.stringify({
+        id: idEleccion,
+        nombre: formData.nombre_eleccion,
+        descripcion: formData.descripcion_eleccion,
+        fecha: formData.fecha_eleccion,
+        votos_permitidos: +formData.votos_permitidos_eleccion,
+    })
+    )
+    navigate(`/${PrivateRoutes.BASE}/${PrivateRoutes.GESTIONAR_ELECCIONES.replace(':id', idEleccion)}`);
   };
 
   const validateForm = () => {
@@ -63,10 +82,10 @@ const CrearEleccion = () => {
 
   return (
     <Main>
-        <div className="max-w-md mx-auto p-6 rounded-lg shadow-md"
+        <div className="max-w-lg mx-auto p-10 rounded-lg shadow-md"
             style={{ marginTop: "15vh", position: "relative", background: "rgba(149, 149, 149, 0.3)" }}
         >
-      <h1 className="text-4xl font-bold text-amber-400 mb-6">Crear Elección</h1>
+      <h1 className="text-5xl font-bold text-amber-400 mb-6">Crear Elección</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="text-amber-100">
           <Label htmlFor="nombre_eleccion" className="text-amber-100">
@@ -89,7 +108,7 @@ const CrearEleccion = () => {
         </div>
 
         <div>
-          <Label htmlFor="descripcion_eleccion" className="text-amber-100">
+          <Label htmlFor="descripcion_eleccion" className="text-amber-100 ">
             Descripción
           </Label>
           <Input

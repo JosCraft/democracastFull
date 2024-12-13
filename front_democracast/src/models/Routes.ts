@@ -17,7 +17,7 @@ export const EleccionRoute = {
 export const PrivateRoutes = {
     BASE: 'adm',
     DASHBOARD : 'dashboard',
-    GESTIONAR_ELECCIONES : 'gestionar-elecciones',
+    GESTIONAR_ELECCIONES : 'gestionar-elecciones/:id',
     CREAR_ELECCION : 'crear-eleccion',
 };
 

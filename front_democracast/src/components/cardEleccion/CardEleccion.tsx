@@ -10,8 +10,6 @@ import { Eleccion } from "../interface"
 import { useEffect, useState } from 'react'
 import  ParticiparButton  from './ParticiparButton'
 
-import { useNavigate } from "react-router-dom"; // ImAjusta la ruta según corresponda
-
 interface CardEleccionProps {
   eleccion: Eleccion
 
